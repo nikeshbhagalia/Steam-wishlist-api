@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Steam_wishlist_api.Actions;
-using Steam_wishlist_api.Models;
+using SteamWishlistApi.Actions;
+using SteamWishlistApi.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Steam_wishlist_api.Controllers
+namespace SteamWishlistApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

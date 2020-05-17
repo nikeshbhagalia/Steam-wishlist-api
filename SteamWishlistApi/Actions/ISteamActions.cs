@@ -1,8 +1,9 @@
-﻿using Steam_wishlist_api.Models;
+﻿using SteamWishlistApi.Models;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Steam_wishlist_api.Actions
+namespace SteamWishlistApi.Actions
 {
     public interface ISteamActions
     {
