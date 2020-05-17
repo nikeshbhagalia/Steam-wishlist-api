@@ -22,5 +22,11 @@ namespace SteamWishlistApi.Controllers
         {
             return await _steamActions.GetWishlist(id);
         }
+
+        [HttpGet]
+        public async Task<ActionResult<ICollection<Game>>> Get()
+        {
+            return await _steamActions.GetWishlist("76561198041690658");
+        }
     }
 }
