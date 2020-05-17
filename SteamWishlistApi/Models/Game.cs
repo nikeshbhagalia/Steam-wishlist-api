@@ -1,4 +1,4 @@
-﻿namespace Steam_wishlist_api.Models
+﻿namespace SteamWishlistApi.Models
 {
     public class Game
     {

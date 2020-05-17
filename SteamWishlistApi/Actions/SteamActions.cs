@@ -1,6 +1,5 @@
-﻿using HtmlAgilityPack;
-using Newtonsoft.Json;
-using Steam_wishlist_api.Models;
+﻿using Newtonsoft.Json;
+using SteamWishlistApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +7,10 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Steam_wishlist_api.Actions
+namespace SteamWishlistApi.Actions
 {
-    public class SteamActions: ISteamActions
+    public class SteamActions : ISteamActions
     {
-        private readonly HtmlWeb _htmlWeb;
-
-        public SteamActions()
-        {
-            _htmlWeb = new HtmlWeb();
-        }
-
         public async Task<List<Game>> GetWishlist(string id)
         {
             var webclient = new WebClient();
