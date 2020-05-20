@@ -24,7 +24,6 @@ namespace SteamWishlistApi
                 services.AddScoped<ISteamActions, SteamActions>();
 
                 services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
             }
             catch (Exception ex)
             {
