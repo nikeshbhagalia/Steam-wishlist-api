@@ -11,13 +11,14 @@ namespace SteamWishlistApi.Actions
 {
     public class SteamActions : ISteamActions
     {
+        private const string PageVariableName = "var g_nAdditionalPages = ";
+        
         public async Task<List<Game>> GetWishlist(string id)
         {
             var webclient = new WebClient();
             var sourceCode = webclient.DownloadString(@"https://store.steampowered.com/wishlist/profiles/" + id);
-            var pageVaribaleName = "var g_nAdditionalPages = ";
-            var pageIndex = sourceCode.IndexOf(pageVaribaleName);
-            sourceCode = sourceCode.Substring(pageIndex + pageVaribaleName.Length);
+            var pageIndex = sourceCode.IndexOf(PageVariableName);
+            sourceCode = sourceCode.Substring(pageIndex + PageVariableName.Length);
             var pages = Int32.Parse(sourceCode.Substring(0, sourceCode.IndexOf(";")));
 
             var client = new HttpClient();
