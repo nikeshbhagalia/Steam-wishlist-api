@@ -15,8 +15,12 @@ namespace SteamWishlistApi.Actions
         
         public async Task<List<Game>> GetWishlist(string id)
         {
-            var webclient = new WebClient();
-            var sourceCode = webclient.DownloadString(@"https://store.steampowered.com/wishlist/profiles/" + id);
+            string sourceCode = null;
+            using (var webclient = new WebClient())
+            {
+                sourceCode = webclient.DownloadString(@"https://store.steampowered.com/wishlist/profiles/" + id);
+            }
+
             var pageIndex = sourceCode.IndexOf(PageVariableName);
             sourceCode = sourceCode.Substring(pageIndex + PageVariableName.Length);
             var pages = Int32.Parse(sourceCode.Substring(0, sourceCode.IndexOf(";")));
