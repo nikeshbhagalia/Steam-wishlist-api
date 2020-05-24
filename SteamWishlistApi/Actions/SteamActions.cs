@@ -41,9 +41,9 @@ namespace SteamWishlistApi.Actions
 
             var games = new List<Game>();
 
-            foreach (var r in responses)
+            foreach (var response in responses)
             {
-                var str = await r.Content.ReadAsStringAsync();
+                var str = await response.Content.ReadAsStringAsync();
                 var dict = JsonConvert.DeserializeObject<Dictionary<string, Game>>(str);
                 games.AddRange(dict.Values);
             }
