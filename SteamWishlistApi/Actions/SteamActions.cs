@@ -12,7 +12,14 @@ namespace SteamWishlistApi.Actions
     public class SteamActions : ISteamActions
     {
         private const string PageVariableName = "var g_nAdditionalPages = ";
-        
+
+        private readonly HttpClient _httpClient;
+
+        public SteamActions()
+        {
+            _httpClient = new HttpClient();
+        }
+
         public async Task<List<Game>> GetWishlist(string id)
         {
             string sourceCode = null;
@@ -25,15 +32,13 @@ namespace SteamWishlistApi.Actions
             sourceCode = sourceCode.Substring(pageIndex + PageVariableName.Length);
             var pages = Int32.Parse(sourceCode.Substring(0, sourceCode.IndexOf(";")));
 
-            var client = new HttpClient();
-
             var urls = new string[pages];
             for (var pageNumber = 0; pageNumber < pages; pageNumber++)
             {
                 urls[pageNumber] = @"https://store.steampowered.com/wishlist/profiles/" + id + "/wishlistdata?p=" + pageNumber;
             }
 
-            var requests = urls.Select(url => client.GetAsync(url)).ToList();
+            var requests = urls.Select(url => _httpClient.GetAsync(url)).ToList();
 
             await Task.WhenAll(requests);
 
