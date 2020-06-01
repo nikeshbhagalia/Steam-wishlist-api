@@ -22,7 +22,7 @@ namespace SteamWishlistApi.Actions
 
         public async Task<List<Game>> GetWishlist(string id)
         {
-            string sourceCode = null;
+            var sourceCode = string.Empty;
             using (var webclient = new WebClient())
             {
                 sourceCode = webclient.DownloadString(@"https://store.steampowered.com/wishlist/profiles/" + id);
