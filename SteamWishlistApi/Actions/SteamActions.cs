@@ -11,7 +11,7 @@ namespace SteamWishlistApi.Actions
 {
     public class SteamActions : ISteamActions
     {
-        private const string PageVariableName = "var g_nAdditionalPages = ";
+        private const string PageTotalKey = "var g_nAdditionalPages = ";
 
         private readonly HttpClient _httpClient;
 
@@ -28,8 +28,8 @@ namespace SteamWishlistApi.Actions
                 sourceCode = webclient.DownloadString(@"https://store.steampowered.com/wishlist/profiles/" + id);
             }
 
-            var pageIndex = sourceCode.IndexOf(PageVariableName);
-            sourceCode = sourceCode.Substring(pageIndex + PageVariableName.Length);
+            var pageIndex = sourceCode.IndexOf(PageTotalKey);
+            sourceCode = sourceCode.Substring(pageIndex + PageTotalKey.Length);
             var pages = Int32.Parse(sourceCode.Substring(0, sourceCode.IndexOf(";")));
 
             var urls = new string[pages];
