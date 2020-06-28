@@ -48,8 +48,8 @@ namespace SteamWishlistApi.Actions
 
             foreach (var response in responses)
             {
-                var str = await response.Content.ReadAsStringAsync();
-                var dict = JsonConvert.DeserializeObject<Dictionary<string, Game>>(str);
+                var gamesResponseString = await response.Content.ReadAsStringAsync();
+                var dict = JsonConvert.DeserializeObject<Dictionary<string, Game>>(gamesResponseString);
                 games.AddRange(dict.Values);
             }
 
