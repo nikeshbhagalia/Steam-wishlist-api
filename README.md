@@ -1,1 +1,1 @@
-# Steam Wishlist Api
+# Steam Wishlist API
