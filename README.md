@@ -1,3 +1,3 @@
 # Steam Wishlist API
 
-Retrieves Wishlist of a steam user via ID.
+Retrieves Wishlist of a Steam user via ID.
